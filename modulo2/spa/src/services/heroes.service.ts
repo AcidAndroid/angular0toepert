@@ -71,10 +71,29 @@ export class HeroesService {
   getHeroe(id:number):Heroe{
     return this.heroes[id];
   }
+
+  getHerobyName(name:string):Heroe[]{
+    let contador =0
+    return this.heroes.filter(item => {
+      let heroe=item.nombre.toLowerCase()
+      item.idx=contador
+      console.log(contador);
+      
+      // console.log(heroe)
+      // console.log(heroe.indexOf(name.toLocaleLowerCase()))
+       if (heroe.indexOf(name.toLocaleLowerCase())>=0)
+       {        
+         return item
+       }
+       contador=contador+1
+    });
+  }
+
 }
 
 export interface Heroe{
-  nombre:string
+    idx?:number
+  ,nombre:string
   ,bio:string
   ,img:string
   ,aparicion:string

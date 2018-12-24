@@ -1,0 +1,19 @@
+<div class="container animated fadeIn fast">
+    <h1>
+        Buscador. Resultado para "{{nombre}}"
+    </h1>
+
+    <div class="row" *ngIf="heroes.length==0">
+        <div class="col-md-12">
+            <div class="alert-primary">
+                No hay resultados para el termino "{{nombre}}"
+            </div>
+        </div>
+    </div>
+    <div class="card-columns">
+
+        <app-heroe-tarjeta [heroe]="heroeIndividual" [idHeroe]="heroeIndividual.idx" *ngFor="let heroeIndividual of heroes;let i =index">
+        </app-heroe-tarjeta>
+
+    </div>
+</div>
