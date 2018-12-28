@@ -37,7 +37,130 @@
                 <td>{{arreglo|slice:1:3}}</td>
             </tr>
             <tr>
-
+                <th scope="row">5</th>
+                <td>{{PI}}</td>
+                <td>number</td>
+                <td>{{PI|number}}</td>
+            </tr>
+            <tr>
+                <th scope="row">6</th>
+                <td>{{PI}}</td>
+                <td>number:'3.0-0'</td>
+                <td>{{PI|number:'3.0-0'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">7</th>
+                <td>{{PI}}</td>
+                <td>number:'0.0-0'</td>
+                <td>{{PI|number:'0.0-0'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">8</th>
+                <td>{{PI}}</td>
+                <td>number:'0.1-5'</td>
+                <td>{{PI|number:'0.1-5'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">9</th>
+                <td>{{porcentaje}}</td>
+                <td>percent</td>
+                <td>{{porcentaje|percent}}</td>
+            </tr>
+            <tr>
+                <th scope="row">10</th>
+                <td>{{porcentaje}}</td>
+                <td>percent:'2.2-2'</td>
+                <td>{{porcentaje|percent:'2.2-2'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">11</th>
+                <td>{{porcentaje}}</td>
+                <td>percent:'2.3-4'</td>
+                <td>{{porcentaje|percent:'2.3-4'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">12</th>
+                <td>{{porcentaje}}</td>
+                <td>percent:'4.3-4'</td>
+                <td>{{porcentaje|percent:'4.3-4'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">13</th>
+                <td>{{moneda}}</td>
+                <td>currency</td>
+                <td>{{moneda|currency}}</td>
+            </tr>
+            <tr>
+                <th scope="row">14</th>
+                <td>{{moneda}}</td>
+                <td>currency:'MXN'</td>
+                <td>{{moneda|currency:'MXN'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">15</th>
+                <td>{{moneda}}</td>
+                <td>currency:'EUR'</td>
+                <td>{{moneda|currency:'EUR'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">16</th>
+                <td>{{moneda}}</td>
+                <td>currency:'MXN':'symbol-narrow':'4.0-0'</td>
+                <td>{{moneda|currency:'MXN':'symbol-narrow':'4.0-0'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">17</th>
+                <td>{{moneda}}</td>
+                <td>currency:'EUR'</td>
+                <td>{{moneda|currency:'EUR:':true}}</td>
+            </tr>
+            <tr>
+                <th scope="row">18</th>
+                <td>Recibe un texto despues de 10 segundos</td>
+                <td>async</td>
+                <td>{{valorDePromesa|async}}</td>
+            </tr>
+            <tr>
+                <th scope="row">19</th>
+                <td>{{fecha}}</td>
+                <td>date</td>
+                <td>{{fecha|date}}</td>
+            </tr>
+            <tr>
+                <th scope="row">20</th>
+                <td>{{fecha}}</td>
+                <td>date:'shortDate'</td>
+                <td>{{fecha|date:'shortDate'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">21</th>
+                <td>{{fecha}}</td>
+                <td>date:'shortTime'</td>
+                <td>{{fecha|date:'shortTime'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">22</th>
+                <td>{{fecha}}</td>
+                <td>date:'dd/MM/yy'</td>
+                <td>{{fecha|date:'dd/MM/yy'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">23</th>
+                <td>{{fecha}}</td>
+                <td>date:'dd/MM/yyyy'</td>
+                <td>{{fecha|date:'dd/MM/yyyy'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">24</th>
+                <td>{{nombre2}}</td>
+                <td>Mi pipe llamada "capitalizado":todas</td>
+                <td>{{nombre2|capitalizado:1:2:3}}</td>
+            </tr>
+            <tr>
+                <th scope="row">25</th>
+                <td>{{nombre2}}</td>
+                <td>Mi pipe llamada "capitalizado":primera</td>
+                <td>{{nombre2|capitalizado:false}}</td>
             </tr>
         </tbody>
     </table>
@@ -45,4 +168,12 @@
     <ul>
         <li *ngFor="let item of arreglo | slice:5:10">{{item}}</li>
     </ul>
+    <h4>JSON</h4>
+    <pre>
+        {{heroe|json}}
+    </pre>
+
+    <h4>Video</h4>
+    <iframe width="560" height="315" [src]="video|domseguro:'https://www.youtube.com/embed/'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 </div>
