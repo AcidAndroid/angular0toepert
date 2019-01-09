@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title:string = 'pipes';
-  nombre:string="Hola"
+  nombre:string="Gustavo"
   arreglo=[1,2,3,4,5,6,7,8,9,10]
   PI:number= Math.PI
   porcentaje:number = 0.23456789
@@ -28,4 +28,6 @@ export class AppComponent {
   nombre2:string = "gusTavo adolFo casiMiro piNzon"
 
   video:string="A5QnRdROL2w"
+
+  activar:boolean =true
 }

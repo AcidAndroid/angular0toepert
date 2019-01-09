@@ -162,6 +162,15 @@
                 <td>Mi pipe llamada "capitalizado":primera</td>
                 <td>{{nombre2|capitalizado:false}}</td>
             </tr>
+            <tr>
+                <th scope="row">26</th>
+                <td>{{nombre}}</td>
+                <td>
+                    <span>ACtivar:{{activar}} </span>
+                    <button (click)="activar=!activar" type="button" class="btn btn-block btn-outline-dark"> Activar/Desactivar</button>
+                </td>
+                <td>{{nombre|contrasena:activar}}</td>
+            </tr>
         </tbody>
     </table>
     <h4>Slice</h4>
