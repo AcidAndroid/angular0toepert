@@ -1,29 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { ArtistComponent } from './components/artist/artist.component';
-import { SharedComponent } from './components/shared/shared.component';
-import { RouterModule } from '@angular/router';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
+
+//importar las rutas
 import { ROUTES } from './app.routes';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent,
+    AppComponent,  
     HomeComponent,
     SearchComponent,
     ArtistComponent,
-    SharedComponent,
+    NavbarComponent,
+    
     
   ],
   imports: [
-    BrowserModule
-    ,RouterModule.forRoot(ROUTES,{useHash:true})
+    BrowserModule,
+    RouterModule.forRoot(ROUTES)
+
   ],
   providers: [],
   bootstrap: [AppComponent]
