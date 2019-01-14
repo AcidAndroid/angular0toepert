@@ -1,3 +1,17 @@
-<p>
-  search works!
-</p>
+<div class="row">
+    <div class="col">
+        <input type="text" #termino placeholder="Buscar artista" name="" (keyup)="BuscarArtista(termino.value)" id="" class="form-control">
+    </div>
+</div>
+
+<div class="card-columns m-3">
+    <div *ngFor="let item of artistas" class="card">
+        <div *ngIf="item.images.length>0 ">
+            <img [src]="item.images[0].url" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{item.name}}</h5>
+
+        </div>
+    </div>
+</div>
