@@ -6,12 +6,12 @@
 
 <div class="card-columns m-3">
     <div *ngFor="let item of artistas" class="card">
-        <div *ngIf="item.images.length>0 ">
+        <!-- <div *ngIf="item.images.length>0 ">
             <img [src]="item.images[0].url" class="card-img-top" alt="...">
-        </div>
+        </div> -->
         <div class="card-body">
+            <img [src]="item.images|noimage" class="card-img-top" alt="...">
             <h5 class="card-title">{{item.name}}</h5>
-
         </div>
     </div>
 </div>
