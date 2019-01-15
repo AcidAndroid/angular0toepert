@@ -7,7 +7,8 @@ import { SearchComponent } from './components/search/search.component';
 
 export const ROUTES:Routes = [
     { path: 'home', component: HomeComponent },
-    { path: 'search', component: SearchComponent },            
+    { path: 'search', component: SearchComponent },    
+    { path: 'artist/:id', component: ArtistComponent },         
     { path: '', component: HomeComponent },            
     { path: '**', pathMatch:'full', redirectTo: 'home' }
 ];
