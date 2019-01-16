@@ -13,8 +13,15 @@ export class HomeComponent implements OnInit {
   newReleases:any[]=[]
   loading:boolean=true
 
+  errorServicio:boolean=false
+  erroServicioMensaje:string=""
+
   constructor(private _peticionHttp:HttpClient , private _spotifyService:SpotifyService) {
     this.loading=true 
+
+    this.errorServicio=false
+    this.erroServicioMensaje=""
+
     console.log("Constructor Home");    
     this._peticionHttp.get("https://restcountries.eu/rest/v2/lang/es")
         .subscribe((res:any)=>{
@@ -26,6 +33,11 @@ export class HomeComponent implements OnInit {
             this.newReleases=datos
             this.loading=false
             // console.log(this.newReleases)
+          },(error)=>{
+            this.errorServicio=true
+            this.loading=false
+            this.erroServicioMensaje=error.error.error.message
+            console.log(error.error.error.message)
           });
         
   }

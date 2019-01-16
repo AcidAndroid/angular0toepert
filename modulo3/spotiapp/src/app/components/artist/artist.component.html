@@ -16,4 +16,38 @@
           Regresar
         </button>
     </div>
+
+</div>
+<div class="row m-5">
+    <div class="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Album</th>
+                    <th>Canción</th>
+                    <th>Preview</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let track of topTracks">
+                    <td scope="row">
+                        <img [src]="track.album.images|noimage" alt="Foto" class="img-thumb">
+                    </td>
+                    <td>{{track.album.name}}</td>
+                    <td>{{track.name}}</td>
+                    <td>
+                        <!-- <audio [src]="track.preview_url" controls></audio> -->
+                        <!-- <iframe [src]="https://open.spotify.com/embed/track/5DfWF0jqMgZDCiu9zJENTA" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> -->
+                        <iframe [src]="track.id | domseguro: 'https://open.spotify.com/embed/track/'" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td scope="row"></td>
+                    <td></td>
+                    <td></td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
 </div>

@@ -5,4 +5,10 @@
     <li *ngFor="let item of paises">{{item.name}} -- {{item.population}}</li>
 </ul> -->
 <app-loading *ngIf="loading"></app-loading>
+<div *ngIf="errorServicio" class="alert alert-danger animated fadeIn">
+    <h3>
+        Error en la aplicacion
+    </h3>
+    <p>{{erroServicioMensaje}}</p>
+</div>
 <app-tarjeta [items]="newReleases"></app-tarjeta>
