@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>Terminados</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <img width="100%" src="../../assets/imgs/completados.jpg" alt="Terminados">
+    <ion-list>
+        <button ion-item *ngFor="let lista of _taskListServicio.listas" (click)="listaSeleccionada(lista)">
+              {{ lista.titulo }}
+            </button>
+    </ion-list>
+</ion-content>
