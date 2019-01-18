@@ -18,8 +18,15 @@ export class AgregarPage implements OnInit {
         ,private _navParams:NavParams) {        
             // console.log(this._navParams.get("titulo"))    
             const titulo = this._navParams.get("titulo")
-            this.lista = new Lista(titulo)
-            _taskListServicio.agregarLista(this.lista)
+
+            if(_navParams.get('lista')){
+                this.lista=_navParams .get('lista')
+            }
+            else{
+                this.lista = new Lista(titulo)
+                _taskListServicio.agregarLista(this.lista)
+            }
+
          }
 
     ngOnInit() { 
@@ -34,15 +41,18 @@ export class AgregarPage implements OnInit {
         const item = new ListItem(this.nombreItem)
         console.log(`Item capturado: ${this.nombreItem}`)
         this.lista.items.push(item)
+        this._taskListServicio.guardarStorage()
         this.nombreItem=""
     }
 
     actualizarItem(item:ListItem){
         item.completado=!item.completado
+        this._taskListServicio.guardarStorage()
     }
 
     borrarItem(id:number){
         console.log(id)
         this.lista.items.splice(id,1)
+        this._taskListServicio.guardarStorage()
     }
 }
