@@ -12,7 +12,7 @@ export class TaskListService {
 
         this.listas.push(lista1,lista2)
         console.log('Tasklist serivicio iniciliazado');
-        console.log(this.listas);
+        // console.log(this.listas);
         
 
         
