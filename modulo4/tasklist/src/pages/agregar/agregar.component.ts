@@ -19,6 +19,7 @@ export class AgregarPage implements OnInit {
             // console.log(this._navParams.get("titulo"))    
             const titulo = this._navParams.get("titulo")
             this.lista = new Lista(titulo)
+            _taskListServicio.agregarLista(this.lista)
          }
 
     ngOnInit() { 
@@ -36,7 +37,12 @@ export class AgregarPage implements OnInit {
         this.nombreItem=""
     }
 
-    actualizarTarea(item:ListItem){
+    actualizarItem(item:ListItem){
         item.completado=!item.completado
+    }
+
+    borrarItem(id:number){
+        console.log(id)
+        this.lista.items.splice(id,1)
     }
 }
