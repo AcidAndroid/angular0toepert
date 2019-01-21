@@ -21,6 +21,12 @@ export class TaskListService {
         this.guardarStorage()
     }
 
+    borrarLista(lista:Lista){
+        this.listas = this.listas.filter(item => {
+            return item.id !== lista.id
+        });
+        this.guardarStorage()
+    }
     guardarStorage(){
         localStorage.setItem("data",JSON.stringify(this.listas) )
     }

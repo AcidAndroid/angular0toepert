@@ -45,4 +45,9 @@ export class PendientesPage {
 
     alerta.present()
   }
+
+  borrarLista(lista:Lista){
+    this._taskListServicio.borrarLista(lista)
+       
+  }
 }

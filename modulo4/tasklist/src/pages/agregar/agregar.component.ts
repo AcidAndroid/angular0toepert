@@ -39,7 +39,7 @@ export class AgregarPage implements OnInit {
             return
         }
         const item = new ListItem(this.nombreItem)
-        console.log(`Item capturado: ${this.nombreItem}`)
+        // console.log(`Item capturado: ${this.nombreItem}`)
         this.lista.items.push(item)
         this._taskListServicio.guardarStorage()
         this.nombreItem=""
@@ -47,12 +47,38 @@ export class AgregarPage implements OnInit {
 
     actualizarItem(item:ListItem){
         item.completado=!item.completado
+        
+         if (this.validarTermino()){
+             this.lista.terminada=true
+             this.lista.terminadaEn=new Date()
+         }
+         else{
+            this.lista.terminada=false
+            this.lista.terminadaEn=null
+         }
         this._taskListServicio.guardarStorage()
     }
 
     borrarItem(id:number){
-        console.log(id)
+        // console.log(id)
         this.lista.items.splice(id,1)
+        this.validarTermino()
         this._taskListServicio.guardarStorage()
     }
+    
+    validarTermino():boolean
+    {
+        let listaTerminada:boolean=true
+        const pendientes= this.lista.items.filter(item => {
+            return !item.completado
+        });
+
+        if(pendientes.length>0){
+            listaTerminada=false
+        }
+
+        
+        return listaTerminada
+    }
+
 }

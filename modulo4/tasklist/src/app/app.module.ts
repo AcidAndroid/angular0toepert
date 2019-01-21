@@ -17,13 +17,17 @@ import { TerminadosPage } from '../pages/terminados/terminados.component';
 import { TaskListService } from '../services/tasklist.service';
 import { AgregarPage } from '../pages/agregar/agregar.component';
 
+//Pipes
+import { FiltroCompletadoPipe } from '../pipes/filtro-completado/filtro-completado';
+
 @NgModule({
   declarations: [
     MyApp,    
     TabsPage,
     PendientesPage,
     TerminadosPage,
-    AgregarPage
+    AgregarPage,
+    FiltroCompletadoPipe
   ],
   imports: [
     BrowserModule,
