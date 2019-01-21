@@ -17,11 +17,7 @@ export class PendientesPage {
 
   }
 
-  listaSeleccionada(lista:Lista){
-  console.log(lista)
-  this._navCtrl.push(AgregarPage,{titulo:lista.titulo
-                                 , lista:lista} )
-  }
+  
 
   agregarLista(){
     // console.log("clic en nueva lista");
@@ -46,8 +42,6 @@ export class PendientesPage {
     alerta.present()
   }
 
-  borrarLista(lista:Lista){
-    this._taskListServicio.borrarLista(lista)
-       
-  }
+  
+
 }

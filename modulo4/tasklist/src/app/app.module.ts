@@ -19,6 +19,7 @@ import { AgregarPage } from '../pages/agregar/agregar.component';
 
 //Pipes
 import { FiltroCompletadoPipe } from '../pipes/filtro-completado/filtro-completado';
+import { ListasComponent } from './components/listas.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FiltroCompletadoPipe } from '../pipes/filtro-completado/filtro-completa
     PendientesPage,
     TerminadosPage,
     AgregarPage,
-    FiltroCompletadoPipe
+    FiltroCompletadoPipe,
+    ListasComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,7 @@ import { FiltroCompletadoPipe } from '../pipes/filtro-completado/filtro-completa
     PendientesPage,
     TerminadosPage,
     AgregarPage,
+    
   ],
   providers: [
     StatusBar,
