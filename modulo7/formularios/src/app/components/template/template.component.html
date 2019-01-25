@@ -1,6 +1,58 @@
 <h4>Formularios <small>template</small></h4>
 <hr>
 
+
+<form #forma="ngForm" (ngSubmit)="guardar(forma)" novalidate="">
+
+    <div>
+
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" name="nombre" [(ngModel)]="usuariodefault.nombre" placeholder="Nombre" required minlength=5 #nombre="ngModel">
+                    <div *ngIf="nombre.errors?.required">Este campo es requerido</div>
+                    <div *ngIf="nombre.errors?.minlength">Minimo {{nombre.errors.minlength.requiredLength}} caracteres, actualmente tienes {{nombre.errors.minlength.actualLength}}</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Apellido</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" placeholder="Apellido" name="apellido" [(ngModel)]="usuariodefault.apellido" required minlength=5 #apellido="ngModel">
+                    <div *ngIf="apellido.errors?.required">Este campo es requerido</div>
+                    <div *ngIf="apellido.errors?.minlength">Minimo {{apellido.errors.minlength.requiredLength}} caracteres, actualmente tienes {{apellido.errors.minlength.actualLength}}</div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-md-8">
+
+                <input class="form-control" type="email" placeholder="Correo electrónico" name="email" [(ngModel)]="usuariodefault.email" required minlength=5 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #email="ngModel">
+                <div *ngIf="email.errors?.required">Este campo es requerido</div>
+                <div *ngIf="email.errors?.minlength">Minimo {{email.errors.minlength.requiredLength}} caracteres, actualmente tienes {{email.errors.minlength.actualLength}}</div>
+                <div *ngIf="email.errors?.pattern">Patron requerido {{email.errors.pattern.requiredPattern}},valor actual {{email.errors.pattern.actualValue}}</div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button type="submit" class="btn btn-outline-primary">
+                    Guardar
+                  </button>
+            </div>
+        </div>
+    </div>
+</form>
+
 <form #forma1="ngForm" (ngSubmit)="guardar(forma1)" novalidate="">
     <h3>CON datos desde diferentes origenes pero que NO cambia al origen por el uso del []</h3>
 
@@ -75,7 +127,7 @@
             <label class="col-2 col-form-label">Correo</label>
             <div class="col-md-8">
 
-                <input class="form-control" type="email" placeholder="Correo electrónico" name="email" [(ngModel)]="usuariodefault2.email" required minlength=5>
+                <input class="form-control" type="email" placeholder="Correo electrónico" name="email" [(ngModel)]="usuariodefault2.email" required minlength=5 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
             </div>
         </div>
 
