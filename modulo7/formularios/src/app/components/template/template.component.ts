@@ -17,6 +17,9 @@ export class TemplateComponent implements OnInit {
     nombre:null
     ,apellido:null
     ,email:null
+    ,pais:''
+    ,sexo:""
+    ,acepta:false
   }
 
   usuariodefault1:Object={
@@ -30,6 +33,37 @@ export class TemplateComponent implements OnInit {
     ,apellido:"apellido default"
     ,email:"default@default.com"
   }
+
+  paises:Object=[
+    {
+      codigo:'CRI'
+      ,nombre:"Costa Rica"
+    }
+    ,
+    {
+      codigo:'MX'
+      ,nombre:"Mexico"
+    }
+  ]
+
+
+  sexos:Object=[{
+    codigo:'HO'
+    ,nombre:"Hombre"
+  }
+,{
+  codigo:'MU'
+  ,nombre:"Mujer"
+},
+{
+  codigo:'OT'
+  ,nombre:"Otro"
+},
+{
+  codigo:''
+  ,nombre:"SIN ESPECIFICAR"
+}
+]
   constructor() { }
 
   ngOnInit() {
