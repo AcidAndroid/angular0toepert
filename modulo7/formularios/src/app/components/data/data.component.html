@@ -1,3 +1,111 @@
-<p>
-  data works!
-</p>
+<h4>Formularios <small>Data</small></h4>
+<hr>
+
+
+<form [formGroup]="forma" (ngSubmit)="guardar()" novalidate>
+
+    <div>
+        <h3>Con obtencion de datos desde la clase</h3>
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" [ngClass]="{'is-invalid': forma.controls['nombre'].errors?.required||forma.controls['nombre'].errors?.minlength , 'is-valid': !forma.controls['nombre'].errors?.required && !forma.controls['nombre'].errors?.minlength }" >
+                    <div *ngIf="forma.controls['nombre'].errors?.required">Este campo es requerido</div>
+                    <div *ngIf="forma.controls['nombre'].errors?.minlength">Minimo {{forma.controls['nombre'].errors.minlength.requiredLength}} caracteres, actualmente tienes {{forma.controls['nombre'].errors.minlength.actualLength}}</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Apellido</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido" [ngClass]="{'is-invalid': forma.controls['apellido'].errors?.required||forma.controls['apellido'].errors?.minlength , 'is-valid': !forma.controls['apellido'].errors?.required && !forma.controls['apellido'].errors?.minlength }">
+                    <div *ngIf="forma.controls['apellido'].errors?.required">Este campo es requerido</div>
+                    <div *ngIf="forma.controls['apellido'].errors?.minlength">Minimo {{forma.controls['apellido'].errors.minlength.requiredLength}} caracteres, actualmente tienes {{forma.controls['apellido'].errors.minlength.actualLength}}</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-md-8">
+
+                <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo" [ngClass]="{'is-invalid': forma.controls['correo'].errors?.required||forma.controls['correo'].errors?.minlength , 'is-valid': !forma.controls['correo'].errors?.required && !forma.controls['correo'].errors?.minlength && !forma.controls['correo'].errors?.pattern}">
+
+                <div class="invalid-feedback" *ngIf="forma.controls['correo'].errors?.required">Este campo es requerido</div>
+                <div class="invalid-feedback" *ngIf="forma.controls['correo'].errors?.minlength">Minimo {{forma.controls['correo'].errors.minlength.requiredLength}} caracteres, actualmente tienes {{forma.controls['correo'].errors.minlength.actualLength}}</div>
+                <div class="invalid-feedback" *ngIf="forma.controls['correo'].errors?.pattern">Patron requerido {{forma.controls['correo'].errors.pattern.requiredPattern}},valor actual {{forma.controls['correo'].errors.pattern.actualValue}}</div>
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button type="submit" class="btn btn-outline-primary">
+            Guardar
+          </button>
+            </div>
+            <pre>
+               <span>Forma valida: {{forma.valid}}</span> 
+                {{forma.value | json}}
+            </pre>
+
+        </div>
+    </div>
+
+
+</form>
+
+<form [formGroup]="forma1" (ngSubmit)="guardar1()" novalidate>
+
+    <div>
+        <h3>Con obtencion de datos desde la clase</h3>
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Apellido</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-md-8">
+
+                <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo">
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button type="submit" class="btn btn-outline-primary">
+          Guardar
+        </button>
+            </div>
+        </div>
+    </div>
+
+
+</form>
