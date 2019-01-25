@@ -1,44 +1,91 @@
 <h4>Formularios <small>template</small></h4>
 <hr>
-<form>
+
+<form #forma1="ngForm" (ngSubmit)="guardar(forma1)" novalidate="">
+    <h3>CON datos desde diferentes origenes pero que NO cambia al origen por el uso del []</h3>
 
     <div>
 
-        <div class="form-group row">
-            <label class="col-2 col-form-label">Nombre</label>
-            <div class="col-8">
+        <div>
 
-                <input class="form-control" type="text" placeholder="Nombre">
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" name="nombre" [ngModel]="usuariodefault1.nombre" placeholder="Nombre" required minlength=5>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Apellido</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" placeholder="Apellido" name="apellido" [ngModel]="usuariodefault1.apellido" required minlength=5>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-md-8">
+
+                <input class="form-control" type="email" placeholder="Correo electrónico" name="email" [ngModel]="usuariodefault1.email" required minlength=5>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-2 col-form-label">Apellido</label>
-            <div class="col-8">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button type="submit" class="btn btn-outline-primary">
+            Guardar
+          </button>
+            </div>
+        </div>
+    </div>
 
-                <input class="form-control" type="text" placeholder="Apellido">
+</form>
+
+<form #forma2="ngForm" (ngSubmit)="guardar3(forma2)" novalidate="">
+    <h3>CON datos desde diferentes origenes pero que SÍ cambia al origen por el uso de [()]</h3>
+
+    <div>
+
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" name="nombre" [(ngModel)]="usuariodefault2.nombre" placeholder="Nombre" required minlength=5>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Apellido</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" placeholder="Apellido" name="apellido" [(ngModel)]="usuariodefault2.apellido" required minlength=5>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-md-8">
+
+                <input class="form-control" type="email" placeholder="Correo electrónico" name="email" [(ngModel)]="usuariodefault2.email" required minlength=5>
             </div>
         </div>
 
-    </div>
-
-    <div class="form-group row">
-        <label class="col-2 col-form-label">Correo</label>
-        <div class="col-md-8">
-
-            <input class="form-control" type="email" placeholder="Correo electrónico">
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button type="submit" class="btn btn-outline-primary">
+                Guardar
+              </button>
+            </div>
         </div>
     </div>
-
-
-
-    <div class="form-group row">
-        <label class="col-2 col-form-label">&nbsp;</label>
-        <div class="input-group col-md-8">
-            <button type="submit" class="btn btn-outline-primary">
-        Guardar
-      </button>
-        </div>
-    </div>
-
 </form>
