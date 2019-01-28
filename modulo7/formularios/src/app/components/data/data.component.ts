@@ -32,7 +32,7 @@ export class DataComponent implements OnInit {
         'nombreCompleto': new FormGroup(
                                         {
                                         'nombre': new FormControl('',[Validators.required,Validators.minLength(5)])
-                                        ,'apellido': new FormControl('',[Validators.required,Validators.minLength(5)])
+                                        ,'apellido': new FormControl('',[Validators.required,Validators.minLength(5),this.validacionPeronal])
                                         }
                                       )
         ,'correo': new FormControl('',[Validators.required,Validators.minLength(5),Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")])
@@ -79,7 +79,7 @@ export class DataComponent implements OnInit {
     console.log('Valor forma:',this.forma);
     console.log('Valor campos:',this.forma.value);
     //Esta instruccion resetea la forma a su forma original
-    this.forma.reset() // a un objeto vacion
+    // this.forma.reset() // a un objeto vacion
     // this.forma.reset(this.usuario)//a un objeto por default
   }
   guardar2(){
@@ -97,5 +97,15 @@ export class DataComponent implements OnInit {
   agregarPasatiempos()
   {
     (<FormArray>this.forma.controls['pasatiempos']).push(new FormControl('',[Validators.required]))
+  }
+
+  validacionPeronal(control:FormControl):{[s:string]:boolean}{
+
+
+    if ( String(control.value).toUpperCase() ==="HERRERA") {
+      return{noherrera:true}
+    }
+
+    return null
   }
 }
