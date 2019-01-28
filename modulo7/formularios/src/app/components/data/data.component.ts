@@ -78,7 +78,26 @@ export class DataComponent implements OnInit {
       ,'correo': new FormControl()
     })
 
+
+    //Escucha cualquien cambio en los valores de la forma
+    this.forma.valueChanges
+    .subscribe(data=>{
+      console.log(data)
+    })
+
+    this.forma.controls['username'].valueChanges
+    .subscribe(data=>{
+      console.log('solo se actuliza el valor de username',data)
+    })
+
+    this.forma.controls['username'].statusChanges
+    .subscribe(data=>{
+      console.log('solo se actuliza el status de el username',data)
+    })
+
+
   }
+
 
 
   ngOnInit() {
