@@ -5,16 +5,18 @@
 <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate>
 
     <div>
-        <h3>Con obtencion de datos desde la clase</h3>
-        <div>
+        <h3></h3>
+        <div formGroupName="nombreCompleto">
 
             <div class="form-group row">
                 <label class="col-2 col-form-label">Nombre</label>
                 <div class="col-8">
 
-                    <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" [ngClass]="{'is-invalid': forma.controls['nombre'].errors?.required||forma.controls['nombre'].errors?.minlength , 'is-valid': !forma.controls['nombre'].errors?.required && !forma.controls['nombre'].errors?.minlength }" >
-                    <div *ngIf="forma.controls['nombre'].errors?.required">Este campo es requerido</div>
-                    <div *ngIf="forma.controls['nombre'].errors?.minlength">Minimo {{forma.controls['nombre'].errors.minlength.requiredLength}} caracteres, actualmente tienes {{forma.controls['nombre'].errors.minlength.actualLength}}</div>
+
+                    <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" [ngClass]="{'is-invalid': forma.get('nombreCompleto.nombre').errors?.required||forma.get('nombreCompleto.nombre').errors?.minlength , 'is-valid': !forma.get('nombreCompleto.nombre').errors?.required && !forma.get('nombreCompleto.nombre').errors?.minlength }">
+
+                    <div *ngIf="forma.get('nombreCompleto.nombre').errors?.required">Este campo es requerido</div>
+                    <div *ngIf="forma.get('nombreCompleto.nombre').errors?.minlength">Minimo {{forma.get('nombreCompleto.nombre').errors.minlength.requiredLength}} caracteres, actualmente tienes {{forma.get('nombreCompleto.nombre').errors.minlength.actualLength}}</div>
                 </div>
             </div>
 
@@ -22,9 +24,11 @@
                 <label class="col-2 col-form-label">Apellido</label>
                 <div class="col-8">
 
-                    <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido" [ngClass]="{'is-invalid': forma.controls['apellido'].errors?.required||forma.controls['apellido'].errors?.minlength , 'is-valid': !forma.controls['apellido'].errors?.required && !forma.controls['apellido'].errors?.minlength }">
-                    <div *ngIf="forma.controls['apellido'].errors?.required">Este campo es requerido</div>
-                    <div *ngIf="forma.controls['apellido'].errors?.minlength">Minimo {{forma.controls['apellido'].errors.minlength.requiredLength}} caracteres, actualmente tienes {{forma.controls['apellido'].errors.minlength.actualLength}}</div>
+
+                    <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido" [ngClass]="{'is-invalid': forma.get('nombreCompleto.apellido').errors?.required||forma.get('nombreCompleto.apellido').errors?.minlength , 'is-valid': !forma.get('nombreCompleto.apellido').errors?.required && !forma.get('nombreCompleto.apellido').errors?.minlength }">
+
+                    <div *ngIf="forma.get('nombreCompleto.apellido').errors?.required">Este campo es requerido</div>
+                    <div *ngIf="forma.get('nombreCompleto.apellido').errors?.minlength">Minimo {{forma.get('nombreCompleto.apellido').errors.minlength.requiredLength}} caracteres, actualmente tienes {{forma.get('nombreCompleto.apellido').errors.minlength.actualLength}}</div>
                 </div>
             </div>
 
@@ -34,11 +38,12 @@
             <label class="col-2 col-form-label">Correo</label>
             <div class="col-md-8">
 
-                <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo" [ngClass]="{'is-invalid': forma.controls['correo'].errors?.required||forma.controls['correo'].errors?.minlength , 'is-valid': !forma.controls['correo'].errors?.required && !forma.controls['correo'].errors?.minlength && !forma.controls['correo'].errors?.pattern}">
+
+                <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo" [ngClass]="{'is-invalid': forma.controls['correo'].errors?.required||forma.controls['correo'].errors?.minlength ||forma.controls['correo'].errors?.pattern , 'is-valid': !forma.controls['correo'].errors?.required && !forma.controls['correo'].errors?.minlength && !forma.controls['correo'].errors?.pattern}">
 
                 <div class="invalid-feedback" *ngIf="forma.controls['correo'].errors?.required">Este campo es requerido</div>
                 <div class="invalid-feedback" *ngIf="forma.controls['correo'].errors?.minlength">Minimo {{forma.controls['correo'].errors.minlength.requiredLength}} caracteres, actualmente tienes {{forma.controls['correo'].errors.minlength.actualLength}}</div>
-                <div class="invalid-feedback" *ngIf="forma.controls['correo'].errors?.pattern">Patron requerido {{forma.controls['correo'].errors.pattern.requiredPattern}},valor actual {{forma.controls['correo'].errors.pattern.actualValue}}</div>
+                <div class="invalid-feedback" *ngIf="forma.controls['correo'].errors?.pattern">Patron requerido {{forma.controls['correo'].errors.pattern.requiredPattern}}</div>
 
             </div>
         </div>
@@ -62,6 +67,134 @@
 
 
 </form>
+
+<form [formGroup]="formaValidacionAnidada" (ngSubmit)="guardar()" novalidate>
+
+    <div>
+        <h3>Con obtencion de datos desde la clase con validacion anidada y obtencion de datos desde objeto origen</h3>
+        <div formGroupName="nombreCompleto">
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre</label>
+                <div class="col-8">
+
+
+                    <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" [ngClass]="{'is-invalid': formaValidacionAnidada.get('nombreCompleto.nombre').errors?.required||formaValidacionAnidada.get('nombreCompleto.nombre').errors?.minlength , 'is-valid': !formaValidacionAnidada.get('nombreCompleto.nombre').errors?.required && !formaValidacionAnidada.get('nombreCompleto.nombre').errors?.minlength }">
+
+                    <div *ngIf="formaValidacionAnidada.get('nombreCompleto.nombre').errors?.required">Este campo es requerido</div>
+                    <div *ngIf="formaValidacionAnidada.get('nombreCompleto.nombre').errors?.minlength">Minimo {{formaValidacionAnidada.get('nombreCompleto.nombre').errors.minlength.requiredLength}} caracteres, actualmente tienes {{formaValidacionAnidada.get('nombreCompleto.nombre').errors.minlength.actualLength}}</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Apellido</label>
+                <div class="col-8">
+
+
+                    <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido" [ngClass]="{'is-invalid': formaValidacionAnidada.get('nombreCompleto.apellido').errors?.required||formaValidacionAnidada.get('nombreCompleto.apellido').errors?.minlength , 'is-valid': !formaValidacionAnidada.get('nombreCompleto.apellido').errors?.required && !formaValidacionAnidada.get('nombreCompleto.apellido').errors?.minlength }">
+
+                    <div *ngIf="formaValidacionAnidada.get('nombreCompleto.apellido').errors?.required">Este campo es requerido</div>
+                    <div *ngIf="formaValidacionAnidada.get('nombreCompleto.apellido').errors?.minlength">Minimo {{formaValidacionAnidada.get('nombreCompleto.apellido').errors.minlength.requiredLength}} caracteres, actualmente tienes {{formaValidacionAnidada.get('nombreCompleto.apellido').errors.minlength.actualLength}}</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-md-8">
+
+
+                <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo" [ngClass]="{'is-invalid': formaValidacionAnidada.controls['correo'].errors?.required||formaValidacionAnidada.controls['correo'].errors?.minlength ||formaValidacionAnidada.controls['correo'].errors?.pattern , 'is-valid': !formaValidacionAnidada.controls['correo'].errors?.required && !formaValidacionAnidada.controls['correo'].errors?.minlength && !formaValidacionAnidada.controls['correo'].errors?.pattern}">
+
+                <div class="invalid-feedback" *ngIf="formaValidacionAnidada.controls['correo'].errors?.required">Este campo es requerido</div>
+                <div class="invalid-feedback" *ngIf="formaValidacionAnidada.controls['correo'].errors?.minlength">Minimo {{formaValidacionAnidada.controls['correo'].errors.minlength.requiredLength}} caracteres, actualmente tienes {{formaValidacionAnidada.controls['correo'].errors.minlength.actualLength}}</div>
+                <div class="invalid-feedback" *ngIf="formaValidacionAnidada.controls['correo'].errors?.pattern">Patron requerido {{formaValidacionAnidada.controls['correo'].errors.pattern.requiredPattern}}</div>
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button type="submit" class="btn btn-outline-primary">
+            Guardar
+          </button>
+            </div>
+            <pre>
+               <span>Forma valida: {{formaValidacionAnidada.valid}}</span> 
+                {{forma.value | json}}
+            </pre>
+
+        </div>
+    </div>
+
+
+</form>
+
+<form [formGroup]="formaValidacionSimple" (ngSubmit)="guardar2()" novalidate>
+
+    <div>
+        <h3>Con obtencion de datos desde la clase,pero validacion simple</h3>
+        <div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre" [ngClass]="{'is-invalid': formaValidacionSimple.controls['nombre'].errors?.required||formaValidacionSimple.controls['nombre'].errors?.minlength , 'is-valid': !formaValidacionSimple.controls['nombre'].errors?.required && !formaValidacionSimple.controls['nombre'].errors?.minlength }">
+                    <div *ngIf="formaValidacionSimple.controls['nombre'].errors?.required">Este campo es requerido</div>
+                    <div *ngIf="formaValidacionSimple.controls['nombre'].errors?.minlength">Minimo {{formaValidacionSimple.controls['nombre'].errors.minlength.requiredLength}} caracteres, actualmente tienes {{formaValidacionSimple.controls['nombre'].errors.minlength.actualLength}}</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Apellido</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido" [ngClass]="{'is-invalid': formaValidacionSimple.controls['apellido'].errors?.required||formaValidacionSimple.controls['apellido'].errors?.minlength , 'is-valid': !formaValidacionSimple.controls['apellido'].errors?.required && !formaValidacionSimple.controls['apellido'].errors?.minlength }">
+                    <div *ngIf="formaValidacionSimple.controls['apellido'].errors?.required">Este campo es requerido</div>
+                    <div *ngIf="formaValidacionSimple.controls['apellido'].errors?.minlength">Minimo {{formaValidacionSimple.controls['apellido'].errors.minlength.requiredLength}} caracteres, actualmente tienes {{formaValidacionSimple.controls['apellido'].errors.minlength.actualLength}}</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-md-8">
+
+                <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo" [ngClass]="{'is-invalid': formaValidacionSimple.controls['correo'].errors?.required||formaValidacionSimple.controls['correo'].errors?.minlength ||formaValidacionSimple.controls['correo'].errors?.pattern , 'is-valid': !formaValidacionSimple.controls['correo'].errors?.required && !formaValidacionSimple.controls['correo'].errors?.minlength && !formaValidacionSimple.controls['correo'].errors?.pattern}">
+
+                <div class="invalid-feedback" *ngIf="formaValidacionSimple.controls['correo'].errors?.required">Este campo es requerido</div>
+                <div class="invalid-feedback" *ngIf="formaValidacionSimple.controls['correo'].errors?.minlength">Minimo {{formaValidacionSimple.controls['correo'].errors.minlength.requiredLength}} caracteres, actualmente tienes {{formaValidacionSimple.controls['correo'].errors.minlength.actualLength}}</div>
+                <div class="invalid-feedback" *ngIf="formaValidacionSimple.controls['correo'].errors?.pattern">Patron requerido {{formaValidacionSimple.controls['correo'].errors.pattern.requiredPattern}}</div>
+
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button type="submit" class="btn btn-outline-primary">
+            Guardar
+          </button>
+            </div>
+            <pre>
+               <span>formaValidacionSimple valida: {{formaValidacionSimple.valid}}</span> 
+                {{formaValidacionSimple.value | json}}
+            </pre>
+
+        </div>
+    </div>
+
+
+</form>
+
 
 <form [formGroup]="forma1" (ngSubmit)="guardar1()" novalidate>
 
