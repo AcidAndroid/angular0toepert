@@ -48,9 +48,43 @@
             </div>
         </div>
 
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Username</label>
+            <div class="col-md-8">
+
+
+                <input class="form-control" type="text" placeholder="Usuarios" formControlName="username">
+
+
+            </div>
+        </div>
 
         <div class="form-group row">
-            <label class="col-2 col-form-label">Correo</label>
+            <label class="col-2 col-form-label">Password</label>
+            <div class="col-md-8">
+
+
+                <input class="form-control" type="password" placeholder="Password" formControlName="password1">
+
+
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Repetir Password</label>
+            <div class="col-md-8">
+
+
+                <input class="form-control" type="password" placeholder="Password" formControlName="password2">
+
+
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Pasatiempos</label>
             <div class="col-md-8" formArrayName="pasatiempos">
 
                 <h5>Controles agrgados dinamicamente, respeta la validacion total de la forma</h5>
@@ -73,6 +107,7 @@
             </div>
             <pre>
                <span>Forma valida: {{forma.valid}}</span> 
+               <span>Forma sttaus: {{forma.status}}</span> 
                 {{forma.value | json}}
             </pre>
 
