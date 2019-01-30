@@ -29,7 +29,7 @@ export class HeroeComponent implements OnInit {
       this.id = parametros['id'];
       if (this.id !== 'nuevo') {
         _heroeSrvicio.buscarPorId(this.id).subscribe(data=>{
-          console.log('Busqieda por id',data)
+					console.log('Busqueda por id',data)				
           this.heroe=data
         })
       }
@@ -72,4 +72,6 @@ export class HeroeComponent implements OnInit {
       casa:'Marvel'
     })
   }
+
+	
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Heroe } from '../interfaces/heroe.interface';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
@@ -20,7 +21,7 @@ export class HeroesService {
 
 		return this._peticionHttp.post(this.heroesURL, body, { headers }).pipe(
 			map((item) => {
-				console.log(item);
+				// console.log(item);
 				return item;
 			})
 		);
@@ -37,13 +38,14 @@ export class HeroesService {
 
 		return this._peticionHttp.put(url, body, { headers }).pipe(
 			map((item) => {
-				console.log(item);
+				// console.log(item);
 				return item;
 			})
 		);
 	}
 
-	buscarPorId(key: string) {
+
+	borrarPorId(key: string) {
 		let url = `${this.heroeEditURL}${key}.json`;
 		// let body = JSON.stringify(heroe);
 		const headers = new HttpHeaders({
@@ -51,10 +53,41 @@ export class HeroesService {
     });
     
 
-    return this._peticionHttp.get(url,{headers}).pipe(map((item) => {
+    return this._peticionHttp.delete(url,{headers}).pipe(map((item) => {
       console.log(item)
       return item
     }))
 
 	}
+
+	buscarPorId(key: string):Observable<Heroe> {
+		let url = `${this.heroeEditURL}${key}.json`;
+		// let body = JSON.stringify(heroe);
+		const headers = new HttpHeaders({
+			'Content-Type': 'application/json'
+    });
+    
+
+    return this._peticionHttp.get<Heroe>(url,{headers}).pipe(map((item) => {
+    //   console.log(item)
+      return item
+    }))
+
+	}
+
+
+	buscarTodos():Observable<any>  {
+				
+		const headers = new HttpHeaders({
+			'Content-Type': 'application/json'
+    });
+    
+
+    return this._peticionHttp.get(this.heroesURL,{headers}).pipe(map((item) => {
+    //   console.log(item)
+      return item
+    }))
+
+	}
+
 }
