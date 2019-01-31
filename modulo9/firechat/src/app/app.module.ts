@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { FormsModule } from "@angular/forms";
 
 
 //FireStore
@@ -13,10 +14,17 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 //Variables de entorno
 import { environment } from '../environments/environment';
 
+//Componentes personales
+import { ChatComponent } from './components/chat/chat.component';
+
+//Providers
+import { ChatService } from './providers/chat.service';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule
@@ -24,8 +32,9 @@ import { environment } from '../environments/environment';
     ,AngularFireStorageModule
     ,AngularFireAuthModule
     ,AngularFirestoreModule
+    ,FormsModule
   ],
-  providers: [],
+  providers: [ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
