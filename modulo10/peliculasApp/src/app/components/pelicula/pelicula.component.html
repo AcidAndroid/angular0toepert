@@ -1,3 +1,8 @@
-<p>
-  pelicula works!
-</p>
+<div class="card border-light  mb-3">
+    <img [src]="datosPelicula | imgmdb" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{datosPelicula.title}}</h5>
+        <p class="card-text">{{datosPelicula.overview}}</p>
+        <p class="card-text"><small class="text-muted">Fecha de estreno:</small><small class="text-muted">{{datosPelicula.release_date}}</small></p>
+    </div>
+</div>

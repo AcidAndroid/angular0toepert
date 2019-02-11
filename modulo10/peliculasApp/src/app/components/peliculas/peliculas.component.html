@@ -1,3 +1,27 @@
-<p>
-  peliculas works!
-</p>
+<h1>
+    Estrenos de la semana
+</h1>
+
+
+<div class="card-group border-0">
+    <div *ngFor="let item of peliculasEstrenos" class="card border-0">
+        <app-pelicula [datosPelicula]=item></app-pelicula>
+    </div>
+</div>
+
+<!-- <ul>
+    <li *ngFor="let item of peliculasEstrenos">
+        <img [src]="item | imgmdb" alt="" srcset="">
+        <br> {{item.release_date}} {{item.title}} {{item.original_title}} {{item.overview}}
+    </li>
+</ul> -->
+
+<h1>
+    Peliculas mas populares
+</h1>
+
+<ul>
+    <li *ngFor="let item of peliculasPopulares">
+        {{item.release_date}} {{item.title}} {{item.original_title}} {{item.overview}}
+    </li>
+</ul>

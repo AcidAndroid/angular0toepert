@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {  LOCALE_ID,NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule,HttpClientJsonpModule } from '@angular/common/http';
 
 
 //Servicios
 import { PeliculasService } from './services/peliculas.service';
+import { DatePipe, registerLocaleData } from '@angular/common';
 
 //Componentes Propios
 import { AppComponent } from './app.component';
@@ -21,6 +22,12 @@ import { PeliculasVistasComponent } from './components/peliculas-vistas/pelicula
 //Rutas
 import {  APP_RUTAS_PELICULAS } from './app.routes';
 
+//Pipes
+import { ImgmdbPipe } from './pipes/imgmdb.pipe';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +38,8 @@ import {  APP_RUTAS_PELICULAS } from './app.routes';
     LoginComponent,
     BuscarComponent,
     PeliculasPopularesComponent,
-    PeliculasVistasComponent
+    PeliculasVistasComponent,
+    ImgmdbPipe
   ],
   imports: [
     BrowserModule
@@ -40,7 +48,7 @@ import {  APP_RUTAS_PELICULAS } from './app.routes';
     ,HttpClientJsonpModule
     
   ],
-  providers: [PeliculasService],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-MX'},PeliculasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

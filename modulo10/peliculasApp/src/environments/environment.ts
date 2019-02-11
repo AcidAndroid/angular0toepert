@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false
+  ,urlmdb:"http://image.tmdb.org/t/p/w300"
 };
 
 /*
