@@ -3,10 +3,10 @@
 </h1>
 
 
-<div class="card-group border-0">
-    <div *ngFor="let item of peliculasEstrenos" class="card border-0">
+<div class="card-deck border-0">
+    <span *ngFor="let item of peliculasEstrenos">
         <app-pelicula [datosPelicula]=item></app-pelicula>
-    </div>
+    </span>
 </div>
 
 <!-- <ul>
@@ -22,6 +22,6 @@
 
 <ul>
     <li *ngFor="let item of peliculasPopulares">
-        {{item.release_date}} {{item.title}} {{item.original_title}} {{item.overview}}
+        {{item.id}} {{item.release_date}} {{item.title}} {{item.original_title}} {{item.overview}}
     </li>
 </ul>

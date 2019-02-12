@@ -1,8 +1,39 @@
-<div class="card border-light  mb-3">
-    <img [src]="datosPelicula | imgmdb" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">{{datosPelicula.title}}</h5>
-        <p class="card-text">{{datosPelicula.overview}}</p>
-        <p class="card-text"><small class="text-muted">Fecha de estreno:</small><small class="text-muted">{{datosPelicula.release_date}}</small></p>
+<div *ngIf="!detalle">
+    <a name="" id="" class="btn" role="button" [routerLink]="['/datospelicula',datosPelicula.id]">
+        <div class="card border-light  mb-3">
+            <img [src]="datosPelicula | imgmdb" class="card-img-top" [alt]="datosPelicula.title">
+            <div class="card-body">
+                <h5 class="card-title">{{datosPelicula.title}}</h5>
+                <p class="card-text">{{datosPelicula.overview}}</p>
+            </div>
+            <div class="card-footer text-muted">
+                <small class="text-muted">Fecha de estreno:</small><small class="text-muted">{{datosPelicula.release_date}}</small>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="row m-5" *ngIf="detalle && datosPelicula">
+    <!-- <div class="row">
+        <button type="button" name="" id="" class="btn btn-primary" btn-lg btn-block>Regresar</button>
+    </div> -->
+    <div class="col-sm col-md-3 ">
+        <img [src]="datosPelicula | imgmdb " class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|} " alt=" ">
     </div>
+    <div class="col-sm col-md-9 ">
+        <div class="row">
+            <h1>{{datosPelicula.title}}</h1>
+        </div>
+        <div class="row">
+            <p>
+                {{datosPelicula.overview}}
+            </p>
+        </div>
+        <div class="row text-white bg-dark">
+            <span>Fecha estreno:{{datosPelicula.release_date}}</span>
+        </div>
+        <pre>{{datosPelicula|json}}</pre>
+
+    </div>
+
 </div>

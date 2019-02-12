@@ -9,6 +9,7 @@ import { Component, OnInit,Input } from '@angular/core';
 export class PeliculaComponent implements OnInit {
 
 	@Input () datosPelicula:Pelicula
+	@Input () detalle:boolean=false
 	
 	constructor() {
 		

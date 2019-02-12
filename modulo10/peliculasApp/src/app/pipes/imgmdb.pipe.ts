@@ -10,13 +10,15 @@ export class ImgmdbPipe implements PipeTransform {
     let url:string=""
     let env = environment
     
-    console.log(value);
-    
+    // console.log(value);    
     if(value.poster_path){
        return `${env.urlmdb}${value.poster_path}`;
     }
+    if(value.backdrop_path){
+      return `${env.urlmdb}${value.backdrop_path}`
+    }
     else{
-       return `https://fakeimg.pl/300x450/?text=${value.title}`
+       return `https://fakeimg.pl/300/?text=${value.title}`
     }
     
   }

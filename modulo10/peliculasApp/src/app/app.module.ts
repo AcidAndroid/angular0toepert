@@ -6,7 +6,6 @@ import { HttpClientModule,HttpClientJsonpModule } from '@angular/common/http';
 
 //Servicios
 import { PeliculasService } from './services/peliculas.service';
-import { DatePipe, registerLocaleData } from '@angular/common';
 
 //Componentes Propios
 import { AppComponent } from './app.component';
@@ -18,6 +17,7 @@ import { LoginComponent } from './components/login/login.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 import { PeliculasPopularesComponent } from './components/peliculas-populares/peliculas-populares.component';
 import { PeliculasVistasComponent } from './components/peliculas-vistas/peliculas-vistas.component';
+import { DatospeliculaComponent } from './components/datospelicula/datospelicula.component';
 
 //Rutas
 import {  APP_RUTAS_PELICULAS } from './app.routes';
@@ -39,7 +39,8 @@ import { ImgmdbPipe } from './pipes/imgmdb.pipe';
     BuscarComponent,
     PeliculasPopularesComponent,
     PeliculasVistasComponent,
-    ImgmdbPipe
+    ImgmdbPipe,
+    DatospeliculaComponent
   ],
   imports: [
     BrowserModule
