@@ -13,7 +13,16 @@
     </a>
 </div>
 
+
+
 <div class="row m-5" *ngIf="detalle && datosPelicula">
+
+    <div class="col-sm-12 mb-4">
+        <button type="button" name="" id="" class="btn btn-danger" btn-lg btn-block>Regresar</button>
+    </div>
+
+
+
     <!-- <div class="row">
         <button type="button" name="" id="" class="btn btn-primary" btn-lg btn-block>Regresar</button>
     </div> -->
@@ -25,14 +34,15 @@
             <h1>{{datosPelicula.title}}</h1>
         </div>
         <div class="row">
-            <p>
+            <p *ngIf="datosPelicula.overview.length>0">
                 {{datosPelicula.overview}}
             </p>
+            <h3 *ngIf="datosPelicula.overview.length<=0">Sin reseña</h3>
         </div>
         <div class="row text-white bg-dark">
             <span>Fecha estreno:{{datosPelicula.release_date}}</span>
         </div>
-        <pre>{{datosPelicula|json}}</pre>
+        <!-- <pre>{{datosPelicula|json}}</pre> -->
 
     </div>
 
