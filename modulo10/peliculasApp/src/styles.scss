@@ -7,6 +7,14 @@ body {
     margin-bottom: 150px;
 }
 
+.text-long {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    // line-height: X;
+    // max-height: X*N;
+}
+
 .puntero {
     cursor: pointer;
 }

@@ -2,11 +2,12 @@
     Estrenos de la semana
 </h1>
 
+<hr>
 
 <div class="card-deck border-0">
     <span *ngFor="let item of peliculasEstrenos">
-        <app-pelicula [datosPelicula]=item></app-pelicula>
-    </span>
+    <app-pelicula [datosPelicula]=item [detalle]="false"></app-pelicula>
+  </span>
 </div>
 
 <!-- <ul>
@@ -19,9 +20,25 @@
 <h1>
     Peliculas mas populares
 </h1>
+<hr>
 
-<ul>
+<div class="card-deck border-0">
+    <span *ngFor="let item of peliculasPopulares">
+    <app-pelicula [datosPelicula]=item></app-pelicula>
+  </span>
+</div>
+
+<h1>
+    Peliculas mas populares para niños
+</h1>
+<hr>
+<div class="card-deck border-0">
+    <span *ngFor="let item of peliculasNinos">
+    <app-pelicula [datosPelicula]=item></app-pelicula>
+  </span>
+</div>
+<!-- <ul>
     <li *ngFor="let item of peliculasPopulares">
         {{item.id}} {{item.release_date}} {{item.title}} {{item.original_title}} {{item.overview}}
     </li>
-</ul>
+</ul> -->

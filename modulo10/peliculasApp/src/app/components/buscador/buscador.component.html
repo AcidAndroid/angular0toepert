@@ -1,0 +1,24 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="form-group col-12">
+            <input type="text" class="form-control" name="busqueda" id="" aria-describedby="helpId" placeholder="Nombre pelicula" #buscarTexto (keyup.enter)="buscar(buscarTexto.value)">
+            <small id="helpId" class="form-text text-muted">Escribe el nombre de la pelicula deseada</small>
+        </div>
+    </div>
+    <h1>
+        Buscador. Resultado para "{{nombre}}"
+    </h1>
+
+    <div class="row" *ngIf="nombre.length==0">
+        <div class="col-md-12">
+            <div class="alert-primary">
+                No hay resultados para el termino "{{nombre}}"
+            </div>
+        </div>
+    </div>
+    <div class="card-deck border-0">
+        <span *ngFor="let item of _resultadoBusqueda">
+        <app-pelicula [datosPelicula]=item [detalle]="false"></app-pelicula>
+      </span>
+    </div>
+</div>

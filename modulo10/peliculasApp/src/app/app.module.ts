@@ -14,7 +14,6 @@ import { HomeComponent } from './components/home/home.component';
 import { PeliculasComponent } from './components/peliculas/peliculas.component';
 import { PeliculaComponent } from './components/pelicula/pelicula.component';
 import { LoginComponent } from './components/login/login.component';
-import { BuscarComponent } from './components/buscar/buscar.component';
 import { PeliculasPopularesComponent } from './components/peliculas-populares/peliculas-populares.component';
 import { PeliculasVistasComponent } from './components/peliculas-vistas/peliculas-vistas.component';
 import { DatospeliculaComponent } from './components/datospelicula/datospelicula.component';
@@ -24,6 +23,7 @@ import {  APP_RUTAS_PELICULAS } from './app.routes';
 
 //Pipes
 import { ImgmdbPipe } from './pipes/imgmdb.pipe';
+import { BuscadorComponent } from './components/buscador/buscador.component';
 
 
 
@@ -35,12 +35,13 @@ import { ImgmdbPipe } from './pipes/imgmdb.pipe';
     HomeComponent,
     PeliculasComponent,
     PeliculaComponent,
-    LoginComponent,
-    BuscarComponent,
+    LoginComponent,    
     PeliculasPopularesComponent,
     PeliculasVistasComponent,
     ImgmdbPipe,
-    DatospeliculaComponent
+    DatospeliculaComponent,
+    BuscadorComponent,    
+
   ],
   imports: [
     BrowserModule
