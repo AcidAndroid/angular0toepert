@@ -15,7 +15,6 @@ export class PeliculaComponent implements OnInit {
 	ngOnInit() {}
 
 	regresar() {
-		
-		this._location.back()
+		this._location.back();
 	}
 }
