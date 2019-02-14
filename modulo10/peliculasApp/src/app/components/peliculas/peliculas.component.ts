@@ -17,7 +17,7 @@ export class PeliculasComponent implements OnInit {
 		_servicioPeliculas.getEstrenos().subscribe(
 			(data: any) => {
 				this.peliculasEstrenos = data.results;
-				console.log('Estrenos', this.peliculasEstrenos);
+				// console.log('Estrenos', this.peliculasEstrenos);
 			},
 			(error) => {
 				console.log('Error en conexion con api moviedb:', error);
@@ -27,7 +27,7 @@ export class PeliculasComponent implements OnInit {
 		_servicioPeliculas.getPopularesJsonp().subscribe(
 			(data: any) => {
 				this.peliculasPopulares = data.results;
-				console.log('Pupulares', this.peliculasPopulares);
+				// console.log('Pupulares', this.peliculasPopulares);
 			},
 			(error) => {
 				console.log('Error en conexion con api moviedb:', error);
@@ -37,7 +37,7 @@ export class PeliculasComponent implements OnInit {
 		_servicioPeliculas.getPopularesKidsJsonp().subscribe(
 			(data: any) => {
 				this.peliculasNinos = data.results;
-				console.log('Pupulares kids',this.peliculasNinos);
+				// console.log('Pupulares kids',this.peliculasNinos);
 			},
 			(error) => {
 				console.log('Error en conexion con api moviedb:', error);

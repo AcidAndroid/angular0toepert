@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private _router:Router) { }
+  constructor(private _router:Router) {}
 
   ngOnInit() {
   }
 
   buscar(nombre:string){
     console.log(nombre);    
-    this._router.navigate(['/buscar'])
+    this._router.navigate(['/buscar',nombre])
   }
 }

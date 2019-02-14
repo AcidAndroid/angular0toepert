@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: 'datospelicula/:id', component: DatospeliculaComponent },
     { path: 'populares', component: PeliculasPopularesComponent },
     { path: 'vistas', component: PeliculasVistasComponent },    
-    { path: 'buscar', component: BuscadorComponent },  
+    { path: 'buscar/:nombre', component: BuscadorComponent },  
     { path: '**', pathMatch:'full', redirectTo: 'home' }
 ];
 

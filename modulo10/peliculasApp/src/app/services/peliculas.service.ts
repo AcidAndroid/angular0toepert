@@ -52,7 +52,7 @@ export class PeliculasService {
   getPopularesKidsJsonp(){
     const url = `${this.urlMovie}discover/movie?certification_country=US&certification.lte=PG&sort_by=popularity.desc&api_key=${this.apkey}&language=es-MX&callback=JSONP_CALLBACK`;
 
-    console.log(url);
+    // console.log(url);
     return this._httpPeticion.jsonp(url,'').pipe(map((item) => {
       // console.log('Populares kids',item);
       return item}))
@@ -63,7 +63,7 @@ export class PeliculasService {
     const url = `${this.urlMovie}movie/${id}?sort_by=popularity.desc&api_key=${this.apkey}&language=es-MX&callback=JSONP_CALLBACK`;
 
     return this._httpPeticion.jsonp<Pelicula>(url,'').pipe(map((item) => {
-      console.log('Pelicula Indovidual',item);
+      // console.log('Pelicula Indovidual',item);
       return item}))
 
   }
@@ -71,7 +71,7 @@ export class PeliculasService {
     const url=`${this.urlMovie}search/movie?query=${nombre}&sort_by=popularity.desc&api_key=${this.apkey}&language=es-MX&callback=JSONP_CALLBACK`;
 
     return this._httpPeticion.jsonp(url,'').pipe(map((item) => {
-      console.log('Busqueda',item);
+      // console.log('Busqueda',item);
       return item}))
   }
 }
