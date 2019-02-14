@@ -1,3 +1,15 @@
+<div *ngIf="peliculasEstrenos.length>2">
+    <app-galeria titulo="Estrenos de la semana" [peliculas]="peliculasEstrenos | slice:0:6"></app-galeria>
+</div>
+
+<div *ngIf="peliculasPopulares.length>2">
+    <app-galeria titulo="Top mundiales" [peliculas]="peliculasPopulares | slice:0:6"></app-galeria>
+</div>
+
+<div *ngIf="peliculasNinos.length>2">
+    <app-galeria titulo="Top para niños " [peliculas]="peliculasNinos | slice:0:6"></app-galeria>
+</div>
+
 <h1>
     Estrenos de la semana
 </h1>
@@ -9,13 +21,6 @@
     <app-pelicula [datosPelicula]=item [detalle]="false"></app-pelicula>
   </span>
 </div>
-
-<!-- <ul>
-    <li *ngFor="let item of peliculasEstrenos">
-        <img [src]="item | imgmdb" alt="" srcset="">
-        <br> {{item.release_date}} {{item.title}} {{item.original_title}} {{item.overview}}
-    </li>
-</ul> -->
 
 <h1>
     Peliculas mas populares
@@ -37,8 +42,3 @@
     <app-pelicula [datosPelicula]=item></app-pelicula>
   </span>
 </div>
-<!-- <ul>
-    <li *ngFor="let item of peliculasPopulares">
-        {{item.id}} {{item.release_date}} {{item.title}} {{item.original_title}} {{item.overview}}
-    </li>
-</ul> -->

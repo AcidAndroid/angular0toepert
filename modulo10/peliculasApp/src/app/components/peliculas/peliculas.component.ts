@@ -7,9 +7,9 @@ import { PeliculasService } from '../../services/peliculas.service';
 	styleUrls: [ './peliculas.component.scss' ]
 })
 export class PeliculasComponent implements OnInit {
-	peliculasPopulares: Pelicula[] = [];
-	peliculasEstrenos: Pelicula[] = [];
-	peliculasNinos: Pelicula[] = [];
+	public peliculasPopulares: Pelicula[] = [];
+	public peliculasEstrenos: Pelicula[] = [];
+	public peliculasNinos: Pelicula[] = [];
 
 	constructor(private _servicioPeliculas: PeliculasService) {
 		console.log('Componente Peliculas');

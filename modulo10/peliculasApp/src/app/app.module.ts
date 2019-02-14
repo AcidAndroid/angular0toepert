@@ -24,6 +24,7 @@ import {  APP_RUTAS_PELICULAS } from './app.routes';
 //Pipes
 import { ImgmdbPipe } from './pipes/imgmdb.pipe';
 import { BuscadorComponent } from './components/buscador/buscador.component';
+import { GaleriaComponent } from './components/galeria/galeria.component';
 
 
 
@@ -40,7 +41,8 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
     PeliculasVistasComponent,
     ImgmdbPipe,
     DatospeliculaComponent,
-    BuscadorComponent,    
+    BuscadorComponent,
+    GaleriaComponent,    
 
   ],
   imports: [
