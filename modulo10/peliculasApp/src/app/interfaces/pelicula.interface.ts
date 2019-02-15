@@ -8,4 +8,5 @@ interface Pelicula {
 	original_title?: string,
 	overview: string,
 	release_date: Date,
+	tagline?:string
 }

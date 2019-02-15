@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {  LOCALE_ID,NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule,HttpClientJsonpModule } from '@angular/common/http';
 
@@ -26,7 +26,9 @@ import { ImgmdbPipe } from './pipes/imgmdb.pipe';
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { GaleriaComponent } from './components/galeria/galeria.component';
 
-
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeEs);
 
 
 @NgModule({
@@ -52,7 +54,7 @@ import { GaleriaComponent } from './components/galeria/galeria.component';
     ,HttpClientJsonpModule
     
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'es-MX'},PeliculasService],
+  providers: [PeliculasService,{ provide: LOCALE_ID, useValue: 'es-MX'}],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

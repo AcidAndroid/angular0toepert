@@ -26,21 +26,30 @@
     <!-- <div class="row">
         <button type="button" name="" id="" class="btn btn-primary" btn-lg btn-block>Regresar</button>
     </div> -->
-    <div class="col-sm col-md-3 ">
-        <img [src]="datosPelicula | imgmdb " class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|} " alt=" ">
+    <div class="col-sm col-md-5 ">
+        <img [src]="datosPelicula | imgmdb:true " class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|} " alt=" ">
     </div>
-    <div class="col-sm col-md-9 ">
+    <div class="col-sm col-md-7 ">
         <div class="row">
             <h1>{{datosPelicula.title}}</h1>
         </div>
         <div class="row">
-            <p *ngIf="datosPelicula.overview.length>0">
+            <h3> "{{datosPelicula.tagline}}" </h3>
+        </div>
+        <div class="row">
+            <p *ngIf="datosPelicula.overview.length>0" class="text-justify">
                 {{datosPelicula.overview}}
             </p>
             <h3 *ngIf="datosPelicula.overview.length<=0">Sin reseña</h3>
         </div>
+
         <div class="row text-white bg-dark">
-            <span>Fecha estreno:{{datosPelicula.release_date}}</span>
+            <div class="col-sm-6">
+                <span class="badge badge-info">Fecha estreno: {{datosPelicula.release_date}}</span>
+            </div>
+            <div class="col-sm-6">
+                <span class="badge badge-primary">Popularidad: {{datosPelicula.vote_average | number:'0.1-5'}}/10</span>
+            </div>
         </div>
         <!-- <pre>{{datosPelicula|json}}</pre> -->
 
