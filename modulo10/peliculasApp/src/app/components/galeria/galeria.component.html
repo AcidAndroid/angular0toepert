@@ -8,13 +8,24 @@
     <div class="col-sm-6">
         <div class="row">
 
-            <div class="col-md-12 div-pic-1 puntero" [routerLink]="['/datospelicula',peliculas[0].id]" [ngStyle]="{ 'background-image': 'url( ' + ( peliculas[0] | imgmdb )+ ')'  }"></div>
+            <div class="col-md-12 div-pic-1 puntero" [routerLink]="['/datospelicula',peliculas[0].id]" [ngStyle]="{ 'background-image': 'url( ' + ( peliculas[0] | imgmdb )+ ')'  }">
+
+                <p class="pic-titulo">
+                    {{peliculas[0].title}}
+                </p>
+            </div>
 
         </div>
         <div class="row">
             <div class="col-sm-6 div-pic-2 puntero" [routerLink]="['/datospelicula',peliculas[1].id]" [ngStyle]="{ 'background-image': 'url( ' + ( peliculas[1] | imgmdb )+ ')'  }">
+                <p class="pic-titulo">
+                    {{peliculas[1].title}}
+                </p>
             </div>
             <div class="col-sm-6 div-pic-2 puntero" [routerLink]="['/datospelicula',peliculas[2].id]" [ngStyle]="{ 'background-image': 'url( ' + ( peliculas[2] | imgmdb )+ ')'  }">
+                <p class="pic-titulo">
+                    {{peliculas[2].title}}
+                </p>
             </div>
         </div>
 
@@ -25,13 +36,22 @@
     <div class="col-sm-6">
         <div class="row">
             <div class="col-sm-6 div-pic-2 puntero" [routerLink]="['/datospelicula',peliculas[3].id]" [ngStyle]="{ 'background-image': 'url( ' + ( peliculas[3] | imgmdb )+ ')'  }">
+                <p class="pic-titulo">
+                    {{peliculas[3].title}}
+                </p>
             </div>
             <div class="col-sm-6 div-pic-2 puntero" [routerLink]="['/datospelicula',peliculas[4].id]" [ngStyle]="{ 'background-image': 'url( ' + ( peliculas[4] | imgmdb )+ ')'  }">
+                <p class="pic-titulo">
+                    {{peliculas[4].title}}
+                </p>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12 div-pic-1 puntero" [routerLink]="['/datospelicula',peliculas[5].id]" [ngStyle]="{ 'background-image': 'url( ' + ( peliculas[5] | imgmdb )+ ')' }">
+                <p class="pic-titulo">
+                    {{peliculas[5].title}}
+                </p>
             </div>
         </div>
     </div>
