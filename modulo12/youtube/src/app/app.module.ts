@@ -10,6 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 //Servicios
 import { YoutubeService } from './services/youtube.service';
+import { HttpClientModule,HttpClientJsonpModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,9 +20,12 @@ import { YoutubeService } from './services/youtube.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
+    
   ],
-  providers: [YoutubeService],
+  providers: [YoutubeService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

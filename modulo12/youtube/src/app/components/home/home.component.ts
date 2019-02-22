@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(ys:YoutubeService) {
+
+    ys.getvideos().subscribe(data => console.log(data));
+    
+    console.log();
+    
+
+   }
 
   ngOnInit() {
   }
