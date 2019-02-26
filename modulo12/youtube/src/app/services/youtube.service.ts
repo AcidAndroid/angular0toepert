@@ -1,33 +1,45 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { map } from "rxjs/operators";
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: "root"
 })
 export class YoutubeService {
-	youtubeURL: string = 'https://www.googleapis.com/youtube/v3/';
-	apiKey: string = 'AIzaSyBjROwCgXNVKB38HikHx2WfkaQv17k9HhQ';
-	chanelId: string = 'UCbr0g_ADLsdzhcoAFUZkuug';
-	listUploads: string = 'UUbr0g_ADLsdzhcoAFUZkuug';
+  youtubeURL: string = "https://www.googleapis.com/youtube/v3";
+  apiKey: string = "AIzaSyBjROwCgXNVKB38HikHx2WfkaQv17k9HhQ";
+  chanelId: string = "UCLXRGxAzeaLDGaOphqapzmg";
+	listUploads: string = "UULXRGxAzeaLDGaOphqapzmg";
+	nextPageToken:string=""
 
-	constructor(private _peticionHttp: HttpClient) {}
+  constructor(private _peticionHttp: HttpClient) {}
 
-	getvideos() {
+  getvideos() {
+		let params = new HttpParams()
+		.set("part", "snippet")
+		.set("playlistId",this.listUploads)
+		.set("key",this.apiKey)
+		.set("maxResults",'20')
+    
 
-    let params= new HttpParams()
+    let specificURL = `${this.youtubeURL}/playlistItems`;
+    console.log(specificURL);
+    console.log(params.toString());
 
-    params.set('part','snippet')
-    params.set('maxResults','10')
-    params.set('id',this.listUploads)
+    return this._peticionHttp.get(` ${specificURL}`, {params}).pipe(
+      map(item => {
+				this.nextPageToken=item['nextPageToken']
+				console.log('nextPageToken',this.nextPageToken);
+				
+				let videos:any[] = []
 
-    let specificURL="playlists"
-
-    return this._peticionHttp.get(`${this.youtubeURL} ${specificURL}`,{params})
-    .pipe(map((item) => {				
-      console.log(item);          
-      // return item;
-			})
-		);
-	}
+				for (const video of item['items']) {
+					videos.push(video.snippet)
+					// console.log(video);					
+				}				
+        // console.log('Videos snippets',videos);
+        return videos;
+      })
+    );
+  }
 }
