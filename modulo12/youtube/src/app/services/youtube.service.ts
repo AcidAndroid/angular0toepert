@@ -20,16 +20,18 @@ export class YoutubeService {
 		.set("playlistId",this.listUploads)
 		.set("key",this.apiKey)
 		.set("maxResults",'20')
-    
-
+		.set("pageToken" ,this.nextPageToken? this.nextPageToken : "" )
+	
+		
     let specificURL = `${this.youtubeURL}/playlistItems`;
-    console.log(specificURL);
-    console.log(params.toString());
+    // console.log(specificURL);
+		// console.log(params.toString());
+    
 
     return this._peticionHttp.get(` ${specificURL}`, {params}).pipe(
       map(item => {
 				this.nextPageToken=item['nextPageToken']
-				console.log('nextPageToken',this.nextPageToken);
+				// console.log('nextPageToken',this.nextPageToken);
 				
 				let videos:any[] = []
 

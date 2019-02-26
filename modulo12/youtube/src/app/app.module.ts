@@ -11,12 +11,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 //Servicios
 import { YoutubeService } from './services/youtube.service';
 import { HttpClientModule,HttpClientJsonpModule } from '@angular/common/http';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    DomseguroPipe
   ],
   imports: [
     BrowserModule,
