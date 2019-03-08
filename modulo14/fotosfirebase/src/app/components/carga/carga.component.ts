@@ -1,27 +1,28 @@
-import { Component, OnInit } from "@angular/core";
-import { CargaImagenesService } from "src/app/providers/carga-imagenes.service";
-import { FileItem } from "../../models/file-item";
+import { Component, OnInit } from '@angular/core';
+import { CargaImagenesService } from 'src/app/providers/carga-imagenes.service';
+import { FileItem } from '../../models/file-item';
 
 @Component({
-  selector: "app-carga",
-  templateUrl: "./carga.component.html",
-  styleUrls: ["./carga.component.scss"]
+	selector: 'app-carga',
+	templateUrl: './carga.component.html',
+	styleUrls: [ './carga.component.scss' ]
 })
 export class CargaComponent implements OnInit {
+	estaSobreElemento: boolean = false;
+	public archivos: FileItem[] = [];
+	constructor(private _cargaService: CargaImagenesService) {}
 
-  estaSobreElemento:boolean=false
-  public archivos: FileItem[] = [];
-  constructor(private _cargaService: CargaImagenesService) {}
+	ngOnInit() {}
 
-  ngOnInit() {}
+	cargarImagenes() {
+		this._cargaService.imagenesPorCargar(this.archivos);
+	}
 
-  cargarImagenes() {
-    this._cargaService.imagenesPorCargar(this.archivos);
-  }
-
-  pruebaSobreElemento(evento){
-    console.log(evento)
-    this.estaSobreElemento=true
-  }
-
+	limpiarArchivos() {
+		this.archivos = [];
+	}
+	pruebaSobreElemento(evento) {
+		console.log(evento);
+		this.estaSobreElemento = true;
+	}
 }
