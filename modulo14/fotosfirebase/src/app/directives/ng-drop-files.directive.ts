@@ -1,12 +1,6 @@
-import {
-  Directive,
-  EventEmitter,
-  ElementRef,
-  HostListener,
-  Input,
-  Output
-} from "@angular/core";
-import { FileItem } from "../models/file-item";
+import { Directive, EventEmitter, ElementRef,
+  HostListener, Input, Output } from '@angular/core';
+import { FileItem } from '../models/file-item';
 
 @Directive({
   selector: "[appNgDropFiles]"
@@ -15,70 +9,92 @@ export class NgDropFilesDirective {
   @Input() archivos: FileItem[] = [];
   @Output() mouseSobre: EventEmitter<boolean> = new EventEmitter();
 
-  constructor() {}
-  @HostListener("dragover", ["$event"])
-  public onDragEnter(event: any) {
-    this.mouseSobre.emit(true);
-    this.prevenirYDetner(event)    
+  constructor() { }
+
+  @HostListener('dragover', ['$event'])
+  public onDragEnter( event: any ) {
+    this.mouseSobre.emit( true );
+    this._prevenirDetener( event );
   }
 
-  @HostListener("dragleave", ["$event"])
-  public onDragLeave(event: any) {
-    this.mouseSobre.emit(false);
+  @HostListener('dragleave', ['$event'])
+  public onDragLeave( event: any ) {
+    this.mouseSobre.emit( false );
   }
 
-  @HostListener("drop", ["$event"])
-  public onDrop(event: any) {
-    
+  @HostListener('drop', ['$event'])
+  public onDrop( event: any ) {
 
-    const trasferencia = this.getTransferencia(event);
-    if (!trasferencia) {
+    const transferencia = this.getTransferencia( event );
+
+    if ( !transferencia ) {
       return;
     }
 
-    this.extraerArchivos(trasferencia.files)    
-    this.prevenirYDetner(event)
-    this.mouseSobre.emit(false);
+    this.extraerArchivos( transferencia.files );
+
+    this._prevenirDetener( event );
+    this.mouseSobre.emit( false );
+
   }
 
   private getTransferencia(event: any) {
-    return event.dataTrasnfer
-      ? event.dataTrasnfer
-      : event.originalEvent.dataTrasnfer;
+    return event.dataTransfer
+      ? event.dataTransfer
+      : event.originalEvent.dataTransfer;
   }
 
   private extraerArchivos(archivosLista: FileList) {
     console.log(archivosLista);
-  }
 
-  //Validaciones
-
-  private archivoParaCarga(archivo: File): boolean {
-    if (!this.archivoCargado(archivo.name) && this.validaImagen(archivo.type)) {
-      return true;
-    } else {
-      return false;
+    for (const propiedad in Object.getOwnPropertyNames(archivosLista)) {
+      
+      //Va a cada archivo para saber su tipo 
+      const archivoTemporal = archivosLista[propiedad];
+      console.log('Nombre Propiedad:',archivoTemporal);
+      
+      //Evalua si el archvio es del tipo adecuado
+      if (this._archivoPuedeSerCargado(archivoTemporal)) {
+        console.log('pUEDE CARGARSE ARCHIVO:',archivoTemporal);
+        this.archivos.push(new FileItem(archivoTemporal))
+      }
+      console.log(this.archivos)    
     }
   }
 
-  private prevenirYDetner(event) {
+  // Validaciones
+  private _archivoPuedeSerCargado( archivo: File ): boolean {
+
+    if ( !this._archivoYaFueDroppeado( archivo.name ) && this._esImagen( archivo.type ) ){
+      return true;
+    }else {
+      return false;
+    }
+
+  }
+
+
+  private _prevenirDetener( event ) {
     event.preventDefault();
     event.stopPropagation();
   }
 
-  private archivoCargado(nombre: string): boolean {
-    for (const archivo of this.archivos) {
-      if (archivo.nombreArchiv == nombre) {
-        console.log(`El archivo ${nombre} ya esta agregado`);
+  private _archivoYaFueDroppeado( nombreArchivo: string ): boolean {
+
+    for ( const archivo of this.archivos ) {
+
+      if ( archivo.nombreArchiv === nombreArchivo  ) {
+        console.log('El archivo ' + nombreArchivo + ' ya esta agregado');
         return true;
       }
+
     }
+
     return false;
   }
 
-  private validaImagen(tipoarchivo: string): boolean {
-    return tipoarchivo === "" || tipoarchivo === undefined
-      ? false
-      : tipoarchivo.startsWith("image");
+  private _esImagen( tipoArchivo: string ): boolean {
+    return ( tipoArchivo === '' || tipoArchivo === undefined ) ? false : tipoArchivo.startsWith('image');
   }
+
 }
