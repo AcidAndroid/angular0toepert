@@ -19,11 +19,36 @@ export class NgDropFilesDirective {
   @HostListener("dragover", ["$event"])
   public onDragEnter(event: any) {
     this.mouseSobre.emit(true);
+    this.prevenirYDetner(event)    
   }
 
   @HostListener("dragleave", ["$event"])
   public onDragLeave(event: any) {
     this.mouseSobre.emit(false);
+  }
+
+  @HostListener("drop", ["$event"])
+  public onDrop(event: any) {
+    
+
+    const trasferencia = this.getTransferencia(event);
+    if (!trasferencia) {
+      return;
+    }
+
+    this.extraerArchivos(trasferencia.files)    
+    this.prevenirYDetner(event)
+    this.mouseSobre.emit(false);
+  }
+
+  private getTransferencia(event: any) {
+    return event.dataTrasnfer
+      ? event.dataTrasnfer
+      : event.originalEvent.dataTrasnfer;
+  }
+
+  private extraerArchivos(archivosLista: FileList) {
+    console.log(archivosLista);
   }
 
   //Validaciones
