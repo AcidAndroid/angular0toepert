@@ -8,6 +8,8 @@ import { FileItem } from "../../models/file-item";
   styleUrls: ["./carga.component.scss"]
 })
 export class CargaComponent implements OnInit {
+
+  estaSobreElemento:boolean=false
   public archivos: FileItem[] = [];
   constructor(private _cargaService: CargaImagenesService) {}
 
@@ -16,4 +18,10 @@ export class CargaComponent implements OnInit {
   cargarImagenes() {
     this._cargaService.imagenesPorCargar(this.archivos);
   }
+
+  pruebaSobreElemento(evento){
+    console.log(evento)
+    this.estaSobreElemento=true
+  }
+
 }
