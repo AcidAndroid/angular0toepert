@@ -2,8 +2,8 @@
     Paises
 </h1>
 <hr>
-<div *ngIf="paises.length>0">
-    <ol class="list-group" cdkDropList>
-        <li class="list-group-item" *ngFor="let item of paises" (cdkDropListDropped)="drop($event)" cdkDrag> {{item}}</li>
+<div *ngIf="paises.length>0" cdkDropList (cdkDropListDropped)="drop($event)">
+    <ol class="list-group">
+        <li class="list-group-item" *ngFor="let item of paises2" cdkDrag> {{item.name}}</li>
     </ol>
 </div>

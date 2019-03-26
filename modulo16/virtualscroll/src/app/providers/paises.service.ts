@@ -12,10 +12,21 @@ export class PaisesService {
   constructor(private _http:HttpClient) { }
 
   consultar(){
+
+    let resultado:any=[]
+
    return this._http.get("https://restcountries.eu/rest/v2/lang/es")
    .pipe(map((data) => {
+     console.log('Data',data)
+     resultado.push(data)
+     console.log('Data',resultado)
     return data
 }));
       
 }
+
+consultar2(){
+  return this._http.get("https://restcountries.eu/rest/v2/lang/es")
+}
+
 }
